@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Us - ZEST Juice Bar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="common.css">
+    <style>
+        .contact-page { padding: 10rem 5% 5rem; max-width: 1400px; margin: 0 auto; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+        .page-title { font-family: 'Playfair Display', serif; font-size: 4.5rem; color: var(--green-deep); margin-bottom: 1rem; }
+        .page-sub { color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 3rem; }
+
+        .location-card { background: white; border-radius: 20px; padding: 2rem; margin-bottom: 1.5rem; border: 2px solid rgba(76,175,118,0.12); transition: all 0.3s; }
+        .location-card:hover { border-color: var(--green-light); transform: translateY(-4px); box-shadow: 0 15px 40px rgba(76,175,118,0.1); }
+        .location-name { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--green-deep); margin-bottom: 0.5rem; }
+        .location-detail { font-size: 0.9rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.4rem; }
+        .location-detail i { color: var(--orange); width: 16px; }
+
+        .contact-form { background: white; border-radius: 24px; padding: 3rem; border: 2px solid rgba(76,175,118,0.12); }
+        .form-title { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--green-deep); margin-bottom: 2rem; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+        .form-input, .form-textarea { width: 100%; padding: 1rem 1.2rem; border: 2px solid rgba(76,175,118,0.15); border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: var(--text-dark); background: var(--cream); transition: border-color 0.3s; }
+        .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--green-light); }
+        .form-textarea { min-height: 140px; resize: vertical; }
+
+        @media (max-width: 968px) { .contact-grid { grid-template-columns: 1fr; } .page-title { font-size: 3rem; } }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-to-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">ZEST<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="customize.html">Build Your Blend</a></li>
+                <li><a href="about.html">Our Story</a></li>
+                <li><a href="blog.html">Journal</a></li>
+                <li><a href="contact.html">Find Us</a></li>
+                <li><a href="login.html" id="loginLink">Login</a></li>
+                <li class="currency-selector">
+                    <button class="currency-btn" id="currencyBtn"><span>USD</span><i class="fas fa-chevron-down"></i></button>
+                    <div class="currency-dropdown" id="currencyDropdown"></div>
+                </li>
+                <li><a href="#" class="cart-icon"><i class="fas fa-shopping-bag"></i><span class="cart-count" id="cart-count">0</span></a></li>
+            </ul>
+            <div class="mobile-menu-toggle" onclick="ZEST.toggleMobileMenu()"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <div class="contact-page">
+        <div class="contact-grid">
+            <div>
+                <div class="section-label">Find Us</div>
+                <h1 class="page-title">Visit a ZEST Location</h1>
+                <p class="page-sub">Six locations across the city, all serving the same freshly pressed goodness.</p>
+
+                <div class="location-card">
+                    <h3 class="location-name">🌿 Brooklyn Flagship</h3>
+                    <div class="location-detail"><i class="fas fa-map-marker-alt"></i> 142 Atlantic Ave, Brooklyn, NY</div>
+                    <div class="location-detail"><i class="fas fa-clock"></i> Mon–Sat 7am–8pm, Sun 8am–6pm</div>
+                    <div class="location-detail"><i class="fas fa-phone"></i> +1 (555) 938-2748</div>
+                </div>
+                <div class="location-card">
+                    <h3 class="location-name">🍊 Manhattan West Village</h3>
+                    <div class="location-detail"><i class="fas fa-map-marker-alt"></i> 87 Bleecker Street, New York, NY</div>
+                    <div class="location-detail"><i class="fas fa-clock"></i> Mon–Fri 7am–7pm, Sat–Sun 8am–6pm</div>
+                    <div class="location-detail"><i class="fas fa-phone"></i> +1 (555) 938-9112</div>
+                </div>
+                <div class="location-card">
+                    <h3 class="location-name">🍋 Austin Downtown</h3>
+                    <div class="location-detail"><i class="fas fa-map-marker-alt"></i> 215 Congress Ave, Austin, TX</div>
+                    <div class="location-detail"><i class="fas fa-clock"></i> Daily 7am–7pm</div>
+                    <div class="location-detail"><i class="fas fa-phone"></i> +1 (555) 938-5566</div>
+                </div>
+
+                <div style="margin-top: 2rem; padding: 1.5rem; background: var(--cream); border-radius: 16px;">
+                    <div class="location-detail"><i class="fas fa-envelope"></i> <strong>hello@zestjuicebar.com</strong></div>
+                    <div class="location-detail" style="margin-top: 0.5rem;"><i class="fas fa-comments"></i> Catering & bulk orders: catering@zestjuicebar.com</div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h2 class="form-title">Send Us a Message</h2>
+                <form onsubmit="event.preventDefault(); alert('Message sent! We\'ll get back to you within 24 hours. 🍊'); this.reset();">
+                    <div class="form-group">
+                        <label class="form-label">Your Name</label>
+                        <input type="text" class="form-input" placeholder="Your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-input" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Subject</label>
+                        <input type="text" class="form-input" placeholder="How can we help?">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Message</label>
+                        <textarea class="form-textarea" placeholder="Tell us what's on your mind..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%; text-align: center; justify-content: center;">Send Message 🌿</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <style>
+        .currency-selector { position: relative; }
+        .currency-btn { background: transparent; border: 1.5px solid rgba(26,74,46,0.2); color: var(--text-dark); padding: 0.4rem 0.9rem; cursor: pointer; font-size: 0.82rem; font-weight: 500; border-radius: 50px; display: flex; align-items: center; gap: 0.4rem; transition: all 0.3s; font-family: 'DM Sans', sans-serif; }
+        .currency-btn:hover { border-color: var(--green-mid); }
+        .currency-dropdown { position: absolute; top: 100%; right: 0; margin-top: 0.5rem; background: white; border: 1px solid rgba(76,175,118,0.15); border-radius: 12px; min-width: 160px; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; }
+        .currency-dropdown.active { display: block; }
+        .currency-option { padding: 0.7rem 1rem; cursor: pointer; font-size: 0.85rem; color: var(--text-dark); transition: background 0.2s; }
+        .currency-option:hover { background: var(--cream); }
+    </style>
+    <script src="common.js"></script>
+</body>
+</html>

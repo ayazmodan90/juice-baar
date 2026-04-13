@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - ZEST Juice Bar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="common.css">
+    <style>
+        body { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
+        .login-visual {
+            background: url('https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=900&q=80') center/cover;
+            position: relative;
+        }
+        .login-visual::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(13,31,20,0.7), rgba(45,122,79,0.5));
+        }
+        .visual-content {
+            position: absolute;
+            z-index: 10;
+            bottom: 4rem;
+            left: 3rem;
+            right: 3rem;
+            color: white;
+        }
+        .visual-logo { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; font-style: italic; color: white; }
+        .visual-logo span { color: var(--orange); }
+        .visual-tagline { color: rgba(255,255,255,0.7); margin-top: 0.5rem; font-size: 1.1rem; }
+
+        .login-panel {
+            background: var(--cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 4rem;
+        }
+        .login-box { width: 100%; max-width: 420px; }
+        .login-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--green-deep); margin-bottom: 0.5rem; }
+        .login-sub { color: var(--text-muted); margin-bottom: 2.5rem; }
+
+        .form-group { margin-bottom: 1.5rem; }
+        .form-label { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem; }
+        .form-input { width: 100%; padding: 1rem 1.2rem; border: 2px solid rgba(76,175,118,0.15); border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; background: white; color: var(--text-dark); transition: border-color 0.3s; }
+        .form-input:focus { outline: none; border-color: var(--green-light); }
+
+        .login-btn { width: 100%; padding: 1.1rem; background: var(--green-deep); color: white; border: none; border-radius: 50px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; font-family: 'DM Sans', sans-serif; margin-top: 0.5rem; }
+        .login-btn:hover { background: var(--green-mid); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(26,74,46,0.25); }
+
+        .divider { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin: 1.5rem 0; position: relative; }
+        .divider::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: rgba(76,175,118,0.15); }
+        .divider span { background: var(--cream); padding: 0 1rem; position: relative; }
+
+        .register-btn { width: 100%; padding: 1.1rem; background: transparent; border: 2px solid var(--orange); color: var(--orange); border-radius: 50px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; font-family: 'DM Sans', sans-serif; }
+        .register-btn:hover { background: var(--orange); color: white; }
+
+        .forgot { text-align: center; margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-muted); }
+        .forgot a { color: var(--green-mid); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            body { grid-template-columns: 1fr; }
+            .login-visual { display: none; }
+            .login-panel { padding: 8rem 2rem 3rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-visual">
+        <div class="visual-content">
+            <div class="visual-logo">ZEST<span>.</span></div>
+            <p class="visual-tagline">Fresh. Pure. Alive.</p>
+        </div>
+    </div>
+
+    <div class="login-panel">
+        <div class="login-box">
+            <a href="index.html" style="color: var(--green-mid); text-decoration: none; font-size: 0.85rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 2rem;">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+            <h1 class="login-title">Welcome Back</h1>
+            <p class="login-sub">Log in to your Juice Club account</p>
+
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" id="loginEmail" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" id="loginPassword" placeholder="Your password" required>
+                </div>
+                <button type="submit" class="login-btn">Sign In 🌿</button>
+            </form>
+
+            <div class="divider"><span>or</span></div>
+
+            <button class="register-btn" onclick="handleRegister()">Create an Account 🍊</button>
+
+            <p class="forgot"><a href="#">Forgot your password?</a></p>
+        </div>
+    </div>
+
+    <script>
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const name = email.split('@')[0].charAt(0).toUpperCase() + email.split('@')[0].slice(1);
+            localStorage.setItem('user', JSON.stringify({ name, email }));
+            alert(`Welcome back, ${name}! 🌿`);
+            window.location.href = 'index.html';
+        }
+        function handleRegister() {
+            const name = prompt('What is your name?');
+            if (name) {
+                const email = prompt('What is your email?');
+                if (email) {
+                    localStorage.setItem('user', JSON.stringify({ name, email }));
+                    alert(`Welcome to ZEST, ${name}! 🍊`);
+                    window.location.href = 'index.html';
+                }
+            }
+        }
+    </script>
+    <script src="common.js"></script>
+</body>
+</html>

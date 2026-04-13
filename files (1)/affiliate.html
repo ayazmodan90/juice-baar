@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner Program - ZEST Juice Bar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="common.css">
+    <style>
+        .affiliate-hero { padding: 10rem 5% 5rem; text-align: center; background: linear-gradient(135deg, var(--green-deep), var(--green-mid)); }
+        .affiliate-hero .section-title { color: white; font-size: 4.5rem; }
+        .affiliate-hero p { color: rgba(255,255,255,0.72); font-size: 1.1rem; margin-top: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+        .steps-section { padding: 6rem 5%; background: var(--cream); }
+        .steps-grid { max-width: 1100px; margin: 4rem auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+        .step-card { text-align: center; padding: 3rem 2rem; background: white; border-radius: 24px; box-shadow: 0 5px 25px rgba(0,0,0,0.06); }
+        .step-num { font-family: 'Playfair Display', serif; font-size: 4.5rem; color: rgba(76,175,118,0.2); font-weight: 900; margin-bottom: 1rem; line-height: 1; }
+        .step-title { font-size: 1.3rem; font-weight: 700; color: var(--green-deep); margin-bottom: 0.8rem; }
+        .step-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+
+        .tiers-section { padding: 6rem 5%; background: white; }
+        .tiers-section .section-title { text-align: center; }
+        .tiers-grid { max-width: 1100px; margin: 4rem auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .tier-card { background: var(--cream); border-radius: 24px; padding: 3rem 2rem; text-align: center; border: 2px solid transparent; transition: all 0.3s; }
+        .tier-card.featured { background: var(--green-deep); border-color: var(--green-deep); transform: scale(1.04); }
+        .tier-card:hover { border-color: var(--green-light); transform: translateY(-8px); }
+        .tier-card.featured:hover { border-color: var(--green-mid); }
+        .tier-name { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--green-deep); margin-bottom: 0.5rem; }
+        .tier-card.featured .tier-name { color: white; }
+        .tier-pct { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; color: var(--orange); margin-bottom: 1.5rem; }
+        .tier-features { list-style: none; text-align: left; }
+        .tier-features li { padding: 0.7rem 0; border-bottom: 1px solid rgba(76,175,118,0.1); color: var(--text-muted); font-size: 0.88rem; display: flex; gap: 0.6rem; align-items: flex-start; }
+        .tier-card.featured .tier-features li { color: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.1); }
+        .tier-features li::before { content: '✓'; color: var(--green-light); font-weight: 700; flex-shrink: 0; }
+        .tier-card.featured .tier-features li::before { color: var(--yellow); }
+
+        .cta-section { padding: 7rem 5%; text-align: center; background: var(--cream); }
+        .cta-section .section-title { margin-bottom: 1rem; }
+        .cta-section p { color: var(--text-muted); font-size: 1.05rem; max-width: 550px; margin: 0 auto 3rem; }
+
+        @media (max-width: 968px) {
+            .steps-grid, .tiers-grid { grid-template-columns: 1fr; }
+            .affiliate-hero .section-title { font-size: 3rem; }
+            .tier-card.featured { transform: none; }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-to-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">ZEST<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="customize.html">Build Your Blend</a></li>
+                <li><a href="about.html">Our Story</a></li>
+                <li><a href="blog.html">Journal</a></li>
+                <li><a href="contact.html">Find Us</a></li>
+                <li><a href="login.html" id="loginLink">Login</a></li>
+                <li class="currency-selector">
+                    <button class="currency-btn" id="currencyBtn"><span>USD</span><i class="fas fa-chevron-down"></i></button>
+                    <div class="currency-dropdown" id="currencyDropdown"></div>
+                </li>
+                <li><a href="#" class="cart-icon"><i class="fas fa-shopping-bag"></i><span class="cart-count" id="cart-count">0</span></a></li>
+            </ul>
+            <div class="mobile-menu-toggle" onclick="ZEST.toggleMobileMenu()"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="affiliate-hero">
+        <div class="section-label" style="color: var(--yellow);">Partner With ZEST</div>
+        <h1 class="section-title">Spread the Goodness,<br>Earn Together</h1>
+        <p>Join our partner program and earn generous commissions sharing fresh, healthy juice with your audience.</p>
+    </section>
+
+    <section class="steps-section">
+        <div style="text-align: center;">
+            <div class="section-label">How It Works</div>
+            <h2 class="section-title">Three Simple Steps</h2>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card reveal">
+                <div class="step-num">01</div>
+                <h3 class="step-title">Apply Online</h3>
+                <p class="step-text">Submit a quick application. Tell us about your platform, community, and wellness focus. We review within 48 hours.</p>
+            </div>
+            <div class="step-card reveal">
+                <div class="step-num">02</div>
+                <h3 class="step-title">Get Approved</h3>
+                <p class="step-text">Once approved, receive your unique referral link, discount codes, and a premium content kit.</p>
+            </div>
+            <div class="step-card reveal">
+                <div class="step-num">03</div>
+                <h3 class="step-title">Start Earning</h3>
+                <p class="step-text">Share your link, inspire healthy living, and earn up to 15% on every order placed through your referral.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tiers-section">
+        <div class="section-label" style="text-align:center;">Commission Tiers</div>
+        <h2 class="section-title">Partner Levels</h2>
+        <div class="tiers-grid">
+            <div class="tier-card reveal">
+                <h3 class="tier-name">Seedling</h3>
+                <div class="tier-pct">8%</div>
+                <ul class="tier-features">
+                    <li>$0–$3,000/month in referrals</li>
+                    <li>Monthly payouts</li>
+                    <li>Basic content kit</li>
+                    <li>Dedicated support</li>
+                </ul>
+            </div>
+            <div class="tier-card featured reveal">
+                <h3 class="tier-name">Grower</h3>
+                <div class="tier-pct">12%</div>
+                <ul class="tier-features">
+                    <li>$3,000–$10,000/month</li>
+                    <li>Bi-weekly payouts</li>
+                    <li>Premium photo/video kit</li>
+                    <li>Priority partner support</li>
+                    <li>Early product previews</li>
+                </ul>
+            </div>
+            <div class="tier-card reveal">
+                <h3 class="tier-name">Harvest</h3>
+                <div class="tier-pct">15%</div>
+                <ul class="tier-features">
+                    <li>$10,000+ /month</li>
+                    <li>Weekly payouts</li>
+                    <li>Custom co-branded content</li>
+                    <li>VIP support line</li>
+                    <li>Co-branded products</li>
+                    <li>Annual wellness retreat</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2 class="section-title">Ready to Partner?</h2>
+        <p>Join hundreds of wellness influencers, nutritionists, and fitness coaches already earning with ZEST.</p>
+        <a href="#" class="btn-primary" onclick="alert('Partner application coming soon! Email partners@zestjuicebar.com to get started.')">Apply Now 🌱</a>
+    </section>
+    <style>
+        .currency-selector { position: relative; }
+        .currency-btn { background: transparent; border: 1.5px solid rgba(26,74,46,0.2); color: var(--text-dark); padding: 0.4rem 0.9rem; cursor: pointer; font-size: 0.82rem; font-weight: 500; border-radius: 50px; display: flex; align-items: center; gap: 0.4rem; transition: all 0.3s; font-family: 'DM Sans', sans-serif; }
+        .currency-btn:hover { border-color: var(--green-mid); }
+        .currency-dropdown { position: absolute; top: 100%; right: 0; margin-top: 0.5rem; background: white; border: 1px solid rgba(76,175,118,0.15); border-radius: 12px; min-width: 160px; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; }
+        .currency-dropdown.active { display: block; }
+        .currency-option { padding: 0.7rem 1rem; cursor: pointer; font-size: 0.85rem; color: var(--text-dark); transition: background 0.2s; }
+        .currency-option:hover { background: var(--cream); }
+    </style>
+    <script src="common.js"></script>
+</body>
+</html>

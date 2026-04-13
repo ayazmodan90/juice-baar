@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story - ZEST Juice Bar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="common.css">
+    <style>
+        .about-hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .about-hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1615485500704-8e990f9900f7?w=1600&q=80') center/cover;
+        }
+        .about-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(13,31,20,0.7), rgba(13,31,20,0.85));
+        }
+        .about-hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 0 2rem;
+        }
+        .about-hero-content .section-title { color: white; font-size: 6rem; }
+        .about-hero-content p { color: rgba(255,255,255,0.75); font-size: 1.3rem; margin-top: 1rem; }
+
+        .manifesto { padding: 8rem 5%; background: white; }
+        .manifesto-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .manifesto-text {
+            font-size: 1.25rem;
+            line-height: 2;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+        .manifesto-text strong { color: var(--green-deep); font-size: 1.5rem; font-family: 'Playfair Display', serif; }
+
+        .split-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 70vh;
+        }
+        .split-img {
+            background-size: cover;
+            background-position: center;
+        }
+        .split-content {
+            display: flex;
+            align-items: center;
+            padding: 5rem;
+            background: var(--cream);
+        }
+        .chapter-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 7rem;
+            color: rgba(76,175,118,0.15);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-section { padding: 8rem 5%; background: var(--green-deep); }
+        .timeline-section .section-title { color: white; text-align: center; margin-bottom: 5rem; }
+        .timeline { max-width: 900px; margin: 0 auto; position: relative; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0; bottom: 0;
+            width: 2px;
+            background: rgba(255,255,255,0.2);
+        }
+        .tl-item { display: flex; margin-bottom: 4rem; position: relative; }
+        .tl-item:nth-child(even) { flex-direction: row-reverse; }
+        .tl-content {
+            width: 45%;
+            padding: 2rem;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+        .tl-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--yellow);
+            margin-bottom: 0.5rem;
+        }
+        .tl-title { font-size: 1.2rem; color: white; margin-bottom: 0.7rem; font-weight: 600; }
+        .tl-text { color: rgba(255,255,255,0.65); line-height: 1.7; font-size: 0.92rem; }
+
+        .values-section { padding: 8rem 5%; background: white; }
+        .values-grid {
+            max-width: 1200px;
+            margin: 4rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+        .value-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            border: 2px solid rgba(76,175,118,0.15);
+            transition: all 0.3s;
+        }
+        .value-card:hover { border-color: var(--green-light); transform: translateY(-8px); box-shadow: 0 20px 50px rgba(76,175,118,0.1); }
+        .value-emoji { font-size: 3.5rem; margin-bottom: 1.5rem; display: block; }
+        .value-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--green-deep); margin-bottom: 1rem; }
+        .value-text { color: var(--text-muted); line-height: 1.8; font-size: 0.95rem; }
+
+        @media (max-width: 968px) {
+            .about-hero-content .section-title { font-size: 3.5rem; }
+            .split-section { grid-template-columns: 1fr; }
+            .split-img { height: 50vh; }
+            .split-content { padding: 3rem 2rem; }
+            .timeline::before { left: 0; }
+            .tl-item, .tl-item:nth-child(even) { flex-direction: column; }
+            .tl-content { width: 100%; margin-left: 2rem; }
+            .values-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-to-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">ZEST<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="customize.html">Build Your Blend</a></li>
+                <li><a href="about.html">Our Story</a></li>
+                <li><a href="blog.html">Journal</a></li>
+                <li><a href="contact.html">Find Us</a></li>
+                <li><a href="login.html" id="loginLink">Login</a></li>
+                <li class="currency-selector">
+                    <button class="currency-btn" id="currencyBtn"><span>USD</span><i class="fas fa-chevron-down"></i></button>
+                    <div class="currency-dropdown" id="currencyDropdown"></div>
+                </li>
+                <li><a href="#" class="cart-icon"><i class="fas fa-shopping-bag"></i><span class="cart-count" id="cart-count">0</span></a></li>
+            </ul>
+            <div class="mobile-menu-toggle" onclick="ZEST.toggleMobileMenu()"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="about-hero">
+        <div class="about-hero-bg"></div>
+        <div class="about-hero-overlay"></div>
+        <div class="about-hero-content">
+            <div class="section-label" style="color: var(--yellow);">Since 2018</div>
+            <h1 class="section-title">Born from a Passion<br>for Pure Living</h1>
+            <p>From a tiny farmers' market stall to 6 thriving locations</p>
+        </div>
+    </section>
+
+    <section class="manifesto">
+        <div class="manifesto-inner">
+            <div class="section-label">Our Manifesto</div>
+            <h2 class="section-title">We Believe Food is Medicine</h2>
+            <p class="manifesto-text">We started ZEST because we believed that <strong>real nutrition shouldn't be complicated.</strong></p>
+            <p class="manifesto-text">In a world of processed food and artificial ingredients, we chose the radical act of simplicity — taking the best organic produce from local farms and pressing it into something extraordinary.</p>
+            <p class="manifesto-text">Every juice we make is a promise. A promise that what goes into your body is clean, honest, and <strong>alive with nutrients.</strong></p>
+        </div>
+    </section>
+
+    <div class="split-section">
+        <div class="split-content">
+            <div>
+                <div class="chapter-num">01</div>
+                <div class="section-label">Our Sourcing</div>
+                <h2 class="section-title" style="font-size: 3rem;">Farm to Glass</h2>
+                <p style="color: var(--text-muted); line-height: 1.8; font-size: 1.05rem;">We partner with 12 local organic farms within 100 miles of each location. Every ingredient is harvested within 24 hours of your juice being pressed. No warehouses. No middlemen. Just the freshest produce going straight from earth to your hands.</p>
+            </div>
+        </div>
+        <div class="split-img" style="background-image: url('https://images.unsplash.com/photo-1560493676-04071c5f467b?w=1200&q=80');"></div>
+    </div>
+
+    <div class="split-section">
+        <div class="split-img" style="background-image: url('https://images.unsplash.com/photo-1631209121750-a9f656d28f24?w=1200&q=80');"></div>
+        <div class="split-content">
+            <div>
+                <div class="chapter-num">02</div>
+                <div class="section-label">Our Process</div>
+                <h2 class="section-title" style="font-size: 3rem;">Cold-Pressed Science</h2>
+                <p style="color: var(--text-muted); line-height: 1.8; font-size: 1.05rem;">Our hydraulic cold-press machines use thousands of pounds of pressure to extract juice without heat. This preserves up to 3× more vitamins, minerals, and enzymes than centrifugal juicing — giving you a living beverage that truly nourishes.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="timeline-section">
+        <h2 class="section-title">Our Journey</h2>
+        <div class="timeline">
+            <div class="tl-item reveal">
+                <div class="tl-content">
+                    <div class="tl-year">2018</div>
+                    <h3 class="tl-title">The First Stall</h3>
+                    <p class="tl-text">Founder Maya Torres starts selling cold-pressed juices at the Riverside Farmers' Market with a single juicer and a dream.</p>
+                </div>
+            </div>
+            <div class="tl-item reveal">
+                <div class="tl-content">
+                    <div class="tl-year">2019</div>
+                    <h3 class="tl-title">First Brick & Mortar</h3>
+                    <p class="tl-text">ZEST opens its first juice bar in Brooklyn. Sells out every day for the first two months.</p>
+                </div>
+            </div>
+            <div class="tl-item reveal">
+                <div class="tl-content">
+                    <div class="tl-year">2021</div>
+                    <h3 class="tl-title">Custom Blends Launch</h3>
+                    <p class="tl-text">We introduce the Build-Your-Blend system, letting customers create personalized juices with booster add-ins.</p>
+                </div>
+            </div>
+            <div class="tl-item reveal">
+                <div class="tl-content">
+                    <div class="tl-year">2023</div>
+                    <h3 class="tl-title">National Recognition</h3>
+                    <p class="tl-text">Named "Best Juice Bar in America" by Wellness Magazine. Expansion to 4 new cities.</p>
+                </div>
+            </div>
+            <div class="tl-item reveal">
+                <div class="tl-content">
+                    <div class="tl-year">2026</div>
+                    <h3 class="tl-title">Zero Waste Pledge</h3>
+                    <p class="tl-text">All 6 locations now operate zero-waste. Pulp goes to composting, bottles are 100% biodegradable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+            <div class="section-label">What We Stand For</div>
+            <h2 class="section-title">Our Values</h2>
+        </div>
+        <div class="values-grid">
+            <div class="value-card reveal"><span class="value-emoji">🌿</span><h3 class="value-title">Purity</h3><p class="value-text">No additives, no preservatives, no shortcuts. Just pure, honest ingredients pressed with care.</p></div>
+            <div class="value-card reveal"><span class="value-emoji">🤝</span><h3 class="value-title">Community</h3><p class="value-text">Supporting local farmers, employing local people, and nourishing local communities one juice at a time.</p></div>
+            <div class="value-card reveal"><span class="value-emoji">🌍</span><h3 class="value-title">Sustainability</h3><p class="value-text">Zero-waste production, biodegradable packaging, and carbon-neutral delivery. The planet matters.</p></div>
+        </div>
+    </section>
+
+    <style>
+        .currency-selector { position: relative; }
+        .currency-btn { background: transparent; border: 1.5px solid rgba(26,74,46,0.2); color: var(--text-dark); padding: 0.4rem 0.9rem; cursor: pointer; font-size: 0.82rem; font-weight: 500; border-radius: 50px; display: flex; align-items: center; gap: 0.4rem; transition: all 0.3s; font-family: 'DM Sans', sans-serif; }
+        .currency-btn:hover { border-color: var(--green-mid); }
+        .currency-dropdown { position: absolute; top: 100%; right: 0; margin-top: 0.5rem; background: white; border: 1px solid rgba(76,175,118,0.15); border-radius: 12px; min-width: 160px; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; }
+        .currency-dropdown.active { display: block; }
+        .currency-option { padding: 0.7rem 1rem; cursor: pointer; font-size: 0.85rem; color: var(--text-dark); transition: background 0.2s; }
+        .currency-option:hover { background: var(--cream); }
+    </style>
+    <script src="common.js"></script>
+</body>
+</html>

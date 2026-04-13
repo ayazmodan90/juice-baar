@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juice Club - ZEST Juice Bar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="common.css">
+    <style>
+        body { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 8rem 2rem 4rem; background: linear-gradient(135deg, #f0faf3, var(--cream)); }
+        .vip-wrap { max-width: 680px; width: 100%; background: white; border-radius: 32px; padding: 4rem 3.5rem; border: 2px solid rgba(76,175,118,0.2); box-shadow: 0 30px 80px rgba(26,74,46,0.12); }
+        .vip-logo { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; font-style: italic; color: var(--green-deep); text-align: center; margin-bottom: 0.3rem; }
+        .vip-logo span { color: var(--orange); }
+        .vip-sub { text-align: center; font-size: 0.82rem; letter-spacing: 3px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 3rem; }
+        .vip-title { font-family: 'Playfair Display', serif; font-size: 2.8rem; text-align: center; color: var(--green-deep); margin-bottom: 1rem; }
+        .vip-desc { text-align: center; color: var(--text-muted); line-height: 1.8; margin-bottom: 3rem; }
+        .benefits-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--green-deep); margin-bottom: 1.5rem; }
+        .benefits-list { list-style: none; margin-bottom: 3rem; }
+        .benefits-list li { padding: 1rem 0; border-bottom: 1px solid rgba(76,175,118,0.1); color: var(--text-muted); display: flex; align-items: flex-start; gap: 0.8rem; font-size: 0.95rem; }
+        .benefits-list li::before { content: '🌿'; flex-shrink: 0; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-label { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
+        .form-input { width: 100%; padding: 1rem 1.3rem; border: 2px solid rgba(76,175,118,0.15); border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: var(--text-dark); background: var(--cream); transition: border-color 0.3s; }
+        .form-input:focus { outline: none; border-color: var(--green-light); background: white; }
+        .submit-btn { width: 100%; padding: 1.2rem; background: var(--orange); color: white; border: none; border-radius: 50px; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 0.5rem; transition: all 0.3s; font-family: 'DM Sans', sans-serif; }
+        .submit-btn:hover { background: #E05828; transform: translateY(-3px); box-shadow: 0 15px 35px rgba(244,112,58,0.3); }
+        .privacy { text-align: center; font-size: 0.78rem; color: var(--text-muted); margin-top: 1.5rem; line-height: 1.7; }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-to-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+
+    <div class="vip-wrap">
+        <div class="vip-logo">ZEST<span>.</span></div>
+        <div class="vip-sub">🍃 Juice Club Membership</div>
+        <h1 class="vip-title">Join the Juice Club</h1>
+        <p class="vip-desc">Unlock exclusive member pricing, priority ordering, and personalized nutrition support. Fresh living, rewarded.</p>
+
+        <h3 class="benefits-title">Member Benefits</h3>
+        <ul class="benefits-list">
+            <li>Early access to seasonal limited blends 24 hours before public</li>
+            <li>Exclusive member pricing — 20% off every order</li>
+            <li>Free wellness shot with every juice purchase</li>
+            <li>Monthly personalized nutrition consultation</li>
+            <li>Free birthday juice (your size, your choice)</li>
+            <li>Priority order pickup — no waiting in line</li>
+            <li>Access to members-only juice cleanse programs</li>
+            <li>Monthly wellness newsletter with expert recipes</li>
+        </ul>
+
+        <form onsubmit="event.preventDefault(); alert('Welcome to the ZEST Juice Club! 🌿 Check your email for your welcome gift.'); this.reset();">
+            <div class="form-group">
+                <label class="form-label">First Name *</label>
+                <input type="text" class="form-input" placeholder="Your first name" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Last Name *</label>
+                <input type="text" class="form-input" placeholder="Your last name" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Email Address *</label>
+                <input type="email" class="form-input" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Favorite Location</label>
+                <input type="text" class="form-input" placeholder="Which ZEST location do you visit?">
+            </div>
+            <button type="submit" class="submit-btn">Join the Juice Club 🍊</button>
+        </form>
+        <p class="privacy">By joining, you agree to our wellness newsletter. No spam, just green goodness. Unsubscribe anytime.</p>
+    </div>
+
+    <style>
+        .currency-selector { display: none; }
+    </style>
+    <script src="common.js"></script>
+</body>
+</html>

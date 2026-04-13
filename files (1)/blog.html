@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal - ZEST Juice Bar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="common.css">
+    <style>
+        .blog-hero { padding: 10rem 5% 5rem; text-align: center; background: white; }
+        .blog-hero .section-title { font-size: 5rem; }
+
+        .featured-post {
+            max-width: 1400px;
+            margin: 0 auto 5rem;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .featured-img { height: 480px; border-radius: 24px; overflow: hidden; }
+        .featured-img img { width: 100%; height: 100%; object-fit: cover; }
+        .post-cat { font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; }
+        .post-title { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--green-deep); margin-bottom: 1.5rem; line-height: 1.2; }
+        .post-excerpt { color: var(--text-muted); line-height: 1.8; font-size: 1rem; margin-bottom: 2rem; }
+        .post-date { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+
+        .articles-section { padding: 0 5% 7rem; background: var(--cream); }
+        .articles-inner { max-width: 1400px; margin: 0 auto; }
+        .articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+
+        .article-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+        }
+        .article-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+        .article-img { height: 240px; overflow: hidden; }
+        .article-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+        .article-card:hover .article-img img { transform: scale(1.06); }
+        .article-body { padding: 1.8rem; }
+        .article-title { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--green-deep); margin-bottom: 0.8rem; line-height: 1.3; }
+        .article-excerpt { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.2rem; }
+        .read-link { color: var(--orange); font-size: 0.85rem; font-weight: 600; text-decoration: none; }
+        .read-link:hover { letter-spacing: 0.5px; }
+
+        @media (max-width: 968px) {
+            .featured-post { grid-template-columns: 1fr; }
+            .articles-grid { grid-template-columns: 1fr; }
+            .blog-hero .section-title { font-size: 3rem; }
+            .post-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-to-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">ZEST<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="customize.html">Build Your Blend</a></li>
+                <li><a href="about.html">Our Story</a></li>
+                <li><a href="blog.html">Journal</a></li>
+                <li><a href="contact.html">Find Us</a></li>
+                <li><a href="login.html" id="loginLink">Login</a></li>
+                <li class="currency-selector">
+                    <button class="currency-btn" id="currencyBtn"><span>USD</span><i class="fas fa-chevron-down"></i></button>
+                    <div class="currency-dropdown" id="currencyDropdown"></div>
+                </li>
+                <li><a href="#" class="cart-icon"><i class="fas fa-shopping-bag"></i><span class="cart-count" id="cart-count">0</span></a></li>
+            </ul>
+            <div class="mobile-menu-toggle" onclick="ZEST.toggleMobileMenu()"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="blog-hero">
+        <div class="section-label">Health & Wellness</div>
+        <h1 class="section-title">The ZEST Journal</h1>
+        <p style="color: var(--text-muted); font-size: 1.1rem; margin-top: 0.5rem;">Juice wisdom, wellness tips, and stories from the bar</p>
+    </section>
+
+    <section style="background: white; padding-bottom: 4rem;">
+        <div class="featured-post">
+            <div class="featured-img">
+                <img src="https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=800&q=80" alt="Cold Press">
+            </div>
+            <div>
+                <div class="post-cat">Cold-Press Science</div>
+                <div class="post-date">February 14, 2026</div>
+                <h2 class="post-title">Why Cold-Pressed Juice is Worth Every Penny</h2>
+                <p class="post-excerpt">We break down the science behind hydraulic cold pressing — why it preserves more nutrients, what the research actually says, and why we'll never go back to centrifugal juicing.</p>
+                <a href="#" class="btn-primary">Read Article</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="articles-section">
+        <div class="articles-inner">
+            <div class="articles-grid">
+                <div class="article-card">
+                    <div class="article-img"><img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=80" alt="Ginger"></div>
+                    <div class="article-body">
+                        <div class="post-cat">Ingredients</div>
+                        <div class="post-date">February 10, 2026</div>
+                        <h3 class="article-title">Ginger: The Root That Does It All</h3>
+                        <p class="article-excerpt">From nausea relief to anti-inflammation — the surprising science behind fresh ginger and why we add it to everything.</p>
+                        <a href="#" class="read-link">Read more →</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-img"><img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=600&q=80" alt="Smoothie"></div>
+                    <div class="article-body">
+                        <div class="post-cat">Nutrition</div>
+                        <div class="post-date">February 5, 2026</div>
+                        <h3 class="article-title">Juice vs Smoothie: Which is Right for You?</h3>
+                        <p class="article-excerpt">They're both delicious and nutritious, but they work differently in your body. Here's how to choose based on your goals.</p>
+                        <a href="#" class="read-link">Read more →</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-img"><img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=600&q=80" alt="Farmers"></div>
+                    <div class="article-body">
+                        <div class="post-cat">Sourcing</div>
+                        <div class="post-date">January 28, 2026</div>
+                        <h3 class="article-title">Meet the Farmers Behind Your Juice</h3>
+                        <p class="article-excerpt">We visit Green Pastures Farm in Hudson Valley — one of our oldest partners — to see where our kale and ginger is grown.</p>
+                        <a href="#" class="read-link">Read more →</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-img"><img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=600&q=80" alt="Cleanse"></div>
+                    <div class="article-body">
+                        <div class="post-cat">Wellness</div>
+                        <div class="post-date">January 20, 2026</div>
+                        <h3 class="article-title">The 3-Day Cleanse: What to Expect</h3>
+                        <p class="article-excerpt">Thinking about doing our signature 3-day cleanse? Here's an honest guide to what your body will go through — day by day.</p>
+                        <a href="#" class="read-link">Read more →</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-img"><img src="https://images.unsplash.com/photo-1567306295427-94503f8300d7?w=600&q=80" alt="Turmeric"></div>
+                    <div class="article-body">
+                        <div class="post-cat">Ingredients</div>
+                        <div class="post-date">January 14, 2026</div>
+                        <h3 class="article-title">Turmeric & the Inflammation Crisis</h3>
+                        <p class="article-excerpt">Chronic inflammation is linked to almost every modern disease. Here's how turmeric helps — and why black pepper makes all the difference.</p>
+                        <a href="#" class="read-link">Read more →</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-img"><img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&q=80" alt="Hydration"></div>
+                    <div class="article-body">
+                        <div class="post-cat">Lifestyle</div>
+                        <div class="post-date">January 7, 2026</div>
+                        <h3 class="article-title">The Morning Routine That Changed Our Lives</h3>
+                        <p class="article-excerpt">Our team swears by this simple morning ritual: water, movement, and one cold-pressed shot. Here's why it works.</p>
+                        <a href="#" class="read-link">Read more →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <style>
+        .currency-selector { position: relative; }
+        .currency-btn { background: transparent; border: 1.5px solid rgba(26,74,46,0.2); color: var(--text-dark); padding: 0.4rem 0.9rem; cursor: pointer; font-size: 0.82rem; font-weight: 500; border-radius: 50px; display: flex; align-items: center; gap: 0.4rem; transition: all 0.3s; font-family: 'DM Sans', sans-serif; }
+        .currency-btn:hover { border-color: var(--green-mid); }
+        .currency-dropdown { position: absolute; top: 100%; right: 0; margin-top: 0.5rem; background: white; border: 1px solid rgba(76,175,118,0.15); border-radius: 12px; min-width: 160px; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; }
+        .currency-dropdown.active { display: block; }
+        .currency-option { padding: 0.7rem 1rem; cursor: pointer; font-size: 0.85rem; color: var(--text-dark); transition: background 0.2s; }
+        .currency-option:hover { background: var(--cream); }
+    </style>
+    <script src="common.js"></script>
+</body>
+</html>

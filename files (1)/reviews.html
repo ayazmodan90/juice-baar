@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews - ZEST Juice Bar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="common.css">
+    <style>
+        .reviews-hero {
+            padding: 10rem 5% 5rem;
+            text-align: center;
+            background: linear-gradient(to bottom, #fff, var(--cream));
+        }
+        .stats-bar {
+            background: var(--green-deep);
+            padding: 3rem 5%;
+        }
+        .stats-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            text-align: center;
+            gap: 2rem;
+        }
+        .stat-num { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; color: var(--yellow); }
+        .stat-lbl { font-size: 0.82rem; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 1px; margin-top: 0.3rem; }
+
+        .reviews-section { padding: 5rem 5%; background: var(--cream); }
+        .reviews-inner { max-width: 1000px; margin: 0 auto; }
+
+        .review-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+        }
+        .review-card:hover { border-color: var(--green-light); transform: translateY(-5px); }
+        .review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .reviewer-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--green-deep); }
+        .review-stars { color: var(--yellow); }
+        .review-product { font-size: 0.82rem; color: var(--orange); font-weight: 600; margin-bottom: 1rem; letter-spacing: 1px; text-transform: uppercase; }
+        .review-text { color: var(--text-muted); line-height: 1.8; font-style: italic; }
+        .verified { display: inline-block; margin-top: 1rem; padding: 0.25rem 0.8rem; background: rgba(76,175,118,0.1); color: var(--green-mid); border-radius: 50px; font-size: 0.75rem; font-weight: 700; }
+
+        @media (max-width: 768px) { .stats-inner { grid-template-columns: repeat(2, 1fr); } }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-to-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">ZEST<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="customize.html">Build Your Blend</a></li>
+                <li><a href="about.html">Our Story</a></li>
+                <li><a href="blog.html">Journal</a></li>
+                <li><a href="contact.html">Find Us</a></li>
+                <li><a href="login.html" id="loginLink">Login</a></li>
+                <li class="currency-selector">
+                    <button class="currency-btn" id="currencyBtn"><span>USD</span><i class="fas fa-chevron-down"></i></button>
+                    <div class="currency-dropdown" id="currencyDropdown"></div>
+                </li>
+                <li><a href="#" class="cart-icon"><i class="fas fa-shopping-bag"></i><span class="cart-count" id="cart-count">0</span></a></li>
+            </ul>
+            <div class="mobile-menu-toggle" onclick="ZEST.toggleMobileMenu()"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="reviews-hero">
+        <div class="section-label">Customer Love</div>
+        <h1 class="section-title">What Our Customers Say</h1>
+        <p style="color: var(--text-muted); font-size: 1.1rem;">Trusted by thousands who believe in fresh, pure nourishment</p>
+    </section>
+
+    <div class="stats-bar">
+        <div class="stats-inner">
+            <div><div class="stat-num">4.9</div><div class="stat-lbl">Avg Rating</div></div>
+            <div><div class="stat-num">8K+</div><div class="stat-lbl">Reviews</div></div>
+            <div><div class="stat-num">97%</div><div class="stat-lbl">Satisfaction</div></div>
+            <div><div class="stat-num">30K+</div><div class="stat-lbl">Members</div></div>
+        </div>
+    </div>
+
+    <section class="reviews-section">
+        <div class="reviews-inner">
+            <div class="review-card">
+                <div class="review-header"><div class="reviewer-name">Sarah Williams</div><div class="review-stars">★★★★★</div></div>
+                <div class="review-product">Green Goddess</div>
+                <p class="review-text">"I've been ordering the Green Goddess every morning for four months. My energy levels are through the roof, my skin looks incredible, and I've never felt more alive. ZEST changed my life, no exaggeration."</p>
+                <span class="verified">✓ Verified Member</span>
+            </div>
+            <div class="review-card">
+                <div class="review-header"><div class="reviewer-name">Marcus Chen</div><div class="review-stars">★★★★★</div></div>
+                <div class="review-product">Sunset Glow + Ginger Shot</div>
+                <p class="review-text">"As someone who's been going to juice bars for 10 years, ZEST is genuinely the best I've tried. You can taste the freshness — it's incomparable to anything bottled. The ginger shot before my run is my secret weapon."</p>
+                <span class="verified">✓ Verified Member</span>
+            </div>
+            <div class="review-card">
+                <div class="review-header"><div class="reviewer-name">Emma Rodriguez</div><div class="review-stars">★★★★★</div></div>
+                <div class="review-product">Custom Blend — Berry Base + Collagen</div>
+                <p class="review-text">"The Build-Your-Blend feature is genius. I told them about my nutrition goals and they helped me design the perfect blend. Six weeks in, my inflammation markers are down and I feel amazing. Worth every cent."</p>
+                <span class="verified">✓ Verified Member</span>
+            </div>
+            <div class="review-card">
+                <div class="review-header"><div class="reviewer-name">James Mitchell</div><div class="review-stars">★★★★★</div></div>
+                <div class="review-product">Protein Power Smoothie</div>
+                <p class="review-text">"Post-workout, nothing hits like the Protein Power smoothie. I've tried every protein shake on the market and this beats them all — tastes like dessert but works like a supplement. Addicted."</p>
+                <span class="verified">✓ Verified Member</span>
+            </div>
+            <div class="review-card">
+                <div class="review-header"><div class="reviewer-name">Priya Sharma</div><div class="review-stars">★★★★★</div></div>
+                <div class="review-product">3-Day Cleanse Program</div>
+                <p class="review-text">"Did the 3-day cleanse before a big event and felt completely reset. Not hungry at all — the juices are so filling and satisfying. My skin glowed and I felt 10 years younger. Already booked my next one."</p>
+                <span class="verified">✓ Verified Member</span>
+            </div>
+        </div>
+    </section>
+    <style>
+        .currency-selector { position: relative; }
+        .currency-btn { background: transparent; border: 1.5px solid rgba(26,74,46,0.2); color: var(--text-dark); padding: 0.4rem 0.9rem; cursor: pointer; font-size: 0.82rem; font-weight: 500; border-radius: 50px; display: flex; align-items: center; gap: 0.4rem; transition: all 0.3s; font-family: 'DM Sans', sans-serif; }
+        .currency-btn:hover { border-color: var(--green-mid); }
+        .currency-dropdown { position: absolute; top: 100%; right: 0; margin-top: 0.5rem; background: white; border: 1px solid rgba(76,175,118,0.15); border-radius: 12px; min-width: 160px; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; }
+        .currency-dropdown.active { display: block; }
+        .currency-option { padding: 0.7rem 1rem; cursor: pointer; font-size: 0.85rem; color: var(--text-dark); transition: background 0.2s; }
+        .currency-option:hover { background: var(--cream); }
+    </style>
+    <script src="common.js"></script>
+</body>
+</html>

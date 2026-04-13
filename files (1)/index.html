@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZEST Juice Bar — Fresh. Pure. Alive.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="common.css">
+    <style>
+        /* ===== HERO ===== */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0D1F14 0%, #1A4A2E 50%, #2D7A4F 100%);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=1600&q=80') center/cover no-repeat;
+            opacity: 0.25;
+        }
+
+        .hero-shapes {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .hero-shapes::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(244,112,58,0.15), transparent 70%);
+            top: -150px;
+            right: -100px;
+        }
+
+        .hero-shapes::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(245,200,66,0.12), transparent 70%);
+            bottom: -100px;
+            left: 20%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 4rem;
+            width: 100%;
+        }
+
+        .hero-text { animation: fadeInLeft 0.9s ease-out; }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.2rem;
+            background: rgba(245,200,66,0.15);
+            border: 1px solid rgba(245,200,66,0.3);
+            border-radius: 50px;
+            color: var(--yellow);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .hero-badge i { font-size: 0.75rem; }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 5.5rem;
+            font-weight: 900;
+            color: white;
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title .accent { color: var(--orange); font-style: italic; }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            max-width: 480px;
+        }
+
+        .hero-cta { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+
+        .hero-visual { animation: fadeInRight 0.9s ease-out 0.2s both; }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .hero-img-wrap {
+            position: relative;
+            border-radius: 30px 30px 120px 30px;
+            overflow: hidden;
+            height: 550px;
+        }
+
+        .hero-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-float {
+            position: absolute;
+            background: white;
+            border-radius: 16px;
+            padding: 1rem 1.4rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .hero-float.f1 { bottom: 2rem; left: -2rem; }
+        .hero-float.f2 { top: 2rem; right: -1rem; }
+
+        .float-icon { font-size: 2rem; }
+
+        .float-text strong {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--green-deep);
+            font-weight: 700;
+        }
+
+        .float-text span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== STATS ===== */
+        .stats-bar {
+            background: var(--green-deep);
+            padding: 2.5rem 5%;
+        }
+
+        .stats-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-item { text-align: center; }
+
+        .stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--yellow);
+        }
+
+        .stat-lbl {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.65);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+        }
+
+        /* ===== FEATURES ===== */
+        .features-section {
+            padding: 7rem 5%;
+            background: white;
+        }
+
+        .features-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            border-radius: 20px;
+            background: var(--cream);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--green-light);
+            background: white;
+            box-shadow: 0 20px 50px rgba(76,175,118,0.12);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--green-mid), var(--green-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.6rem;
+            color: white;
+        }
+
+        .feature-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--green-deep);
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+
+        /* ===== BESTSELLERS ===== */
+        .bestsellers {
+            padding: 7rem 5%;
+            background: var(--cream);
+        }
+
+        .section-header {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .products-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .juice-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .juice-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+        }
+
+        .juice-img {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .juice-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .juice-card:hover .juice-img img { transform: scale(1.06); }
+
+        .juice-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.3rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-new { background: var(--orange); color: white; }
+        .badge-popular { background: var(--green-mid); color: white; }
+        .badge-seasonal { background: var(--yellow); color: var(--green-deep); }
+
+        .juice-wish {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 36px;
+            height: 36px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .juice-wish:hover { color: var(--pink); transform: scale(1.1); }
+
+        .juice-info { padding: 1.5rem; }
+
+        .juice-cat {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .juice-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--green-deep);
+            margin-bottom: 0.5rem;
+        }
+
+        .juice-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.2rem; }
+
+        .juice-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .juice-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--green-deep);
+        }
+
+        .juice-add {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--orange);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .juice-add:hover { background: #E05828; transform: scale(1.1); }
+
+        /* ===== GREEN BANNER ===== */
+        .green-banner {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, var(--green-deep), var(--green-mid));
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .green-banner::before {
+            content: '';
+            position: absolute;
+            width: 500px; height: 500px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+            top: -200px; right: -100px;
+        }
+
+        .green-banner .section-title { color: white; }
+        .green-banner .section-subtitle { color: rgba(255,255,255,0.75); margin: 0 auto 2.5rem; }
+
+        .banner-btns { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            padding: 7rem 5%;
+            background: white;
+        }
+
+        .reviews-grid {
+            max-width: 1200px;
+            margin: 4rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .review-card {
+            padding: 2rem;
+            border-radius: 20px;
+            background: var(--cream);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
+            border-color: var(--green-light);
+            transform: translateY(-5px);
+        }
+
+        .review-stars { color: var(--yellow); font-size: 0.9rem; margin-bottom: 1rem; }
+
+        .review-text {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .reviewer { display: flex; align-items: center; gap: 0.8rem; }
+
+        .reviewer-avatar {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .reviewer-name { font-weight: 600; color: var(--green-deep); font-size: 0.9rem; }
+        .reviewer-since { font-size: 0.78rem; color: var(--text-muted); }
+
+        /* ===== NEWSLETTER ===== */
+        .newsletter {
+            padding: 5rem 5%;
+            background: var(--cream);
+        }
+
+        .newsletter-box {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 2.5rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 2px solid rgba(76,175,118,0.2);
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-family: 'DM Sans', sans-serif;
+            background: white;
+            color: var(--text-dark);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .newsletter-form input:focus { border-color: var(--green-light); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero-title { font-size: 4rem; }
+            .hero-content { grid-template-columns: 1fr; }
+            .hero-visual { display: none; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .products-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-inner { grid-template-columns: repeat(2, 1fr); }
+            .reviews-grid { grid-template-columns: 1fr; }
+            .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+        }
+
+        @media (max-width: 640px) {
+            .hero-title { font-size: 3rem; }
+            .products-grid { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .newsletter-form { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">ZEST<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="customize.html">Build Your Blend</a></li>
+                <li><a href="about.html">Our Story</a></li>
+                <li><a href="blog.html">Journal</a></li>
+                <li><a href="contact.html">Find Us</a></li>
+                <li><a href="login.html" id="loginLink">Login</a></li>
+                <li class="currency-selector">
+                    <button class="currency-btn" id="currencyBtn">
+                        <span>USD</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="currency-dropdown" id="currencyDropdown"></div>
+                </li>
+                <li>
+                    <a href="#" class="cart-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="mobile-menu-toggle" onclick="ZEST.toggleMobileMenu()">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-shapes"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge"><i class="fas fa-leaf"></i> 100% Natural Ingredients</div>
+                <h1 class="hero-title">Fuel Your<br>Body with<br><span class="accent">Pure Juice</span></h1>
+                <p class="hero-subtitle">Cold-pressed, nutrient-rich juices made fresh daily. No preservatives, no shortcuts — just the pure goodness of nature in every sip.</p>
+                <div class="hero-cta">
+                    <a href="menu.html" class="btn-primary">Explore Menu</a>
+                    <a href="customize.html" class="btn-white">Build Your Blend</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=700&q=80" alt="Fresh juices">
+                    <div class="hero-float f1">
+                        <div class="float-icon">🥤</div>
+                        <div class="float-text">
+                            <strong>50+ Blends</strong>
+                            <span>Fresh daily</span>
+                        </div>
+                    </div>
+                    <div class="hero-float f2">
+                        <div class="float-icon">⭐</div>
+                        <div class="float-text">
+                            <strong>4.9 Rating</strong>
+                            <span>8,000+ reviews</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats-bar">
+        <div class="stats-inner">
+            <div class="stat-item"><div class="stat-num">50+</div><div class="stat-lbl">Juice Blends</div></div>
+            <div class="stat-item"><div class="stat-num">8K+</div><div class="stat-lbl">Happy Customers</div></div>
+            <div class="stat-item"><div class="stat-num">100%</div><div class="stat-lbl">Fresh Daily</div></div>
+            <div class="stat-item"><div class="stat-num">6</div><div class="stat-lbl">Locations</div></div>
+        </div>
+    </div>
+
+    <!-- FEATURES -->
+    <section class="features-section">
+        <div class="features-grid">
+            <div class="feature-card reveal">
+                <div class="feature-icon"><i class="fas fa-blender"></i></div>
+                <h3 class="feature-title">Cold-Pressed</h3>
+                <p class="feature-desc">Our slow-press method preserves up to 3x more vitamins and enzymes than traditional juicing.</p>
+            </div>
+            <div class="feature-card reveal">
+                <div class="feature-icon"><i class="fas fa-seedling"></i></div>
+                <h3 class="feature-title">Organic Produce</h3>
+                <p class="feature-desc">Sourced from local farms. Every ingredient is certified organic and pesticide-free.</p>
+            </div>
+            <div class="feature-card reveal">
+                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                <h3 class="feature-title">Made to Order</h3>
+                <p class="feature-desc">Pressed when you order. Never bottled ahead. Maximum freshness, maximum nutrients.</p>
+            </div>
+            <div class="feature-card reveal">
+                <div class="feature-icon"><i class="fas fa-recycle"></i></div>
+                <h3 class="feature-title">Eco Packaging</h3>
+                <p class="feature-desc">100% biodegradable bottles and compostable straws. Drink well, live green.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BESTSELLERS -->
+    <section class="bestsellers">
+        <div class="section-header">
+            <div>
+                <div class="section-label">Our Menu</div>
+                <h2 class="section-title">Customer Favorites</h2>
+            </div>
+            <a href="menu.html" class="btn-secondary">View Full Menu</a>
+        </div>
+        <div class="products-grid">
+            <div class="juice-card" onclick="window.location.href='menu.html'">
+                <div class="juice-img">
+                    <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=600&q=80" alt="Green Goddess">
+                    <span class="juice-badge badge-popular">Most Popular</span>
+                    <button class="juice-wish" onclick="event.stopPropagation(); ZEST.toggleWishlist('green-goddess', 'Green Goddess')"><i class="fas fa-heart"></i></button>
+                </div>
+                <div class="juice-info">
+                    <div class="juice-cat">Detox & Cleanse</div>
+                    <h3 class="juice-name">Green Goddess</h3>
+                    <p class="juice-desc">Kale, cucumber, green apple, ginger, lemon & mint. The ultimate cleanse in a glass.</p>
+                    <div class="juice-footer">
+                        <div class="juice-price" data-price="8.50">$8.50</div>
+                        <button class="juice-add" onclick="event.stopPropagation(); ZEST.addToCart('green-goddess', 'Green Goddess', 8.50)"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="juice-card" onclick="window.location.href='menu.html'">
+                <div class="juice-img">
+                    <img src="https://images.unsplash.com/photo-1534353436294-0dbd4bdac845?w=600&q=80" alt="Sunset Glow">
+                    <span class="juice-badge badge-new">New</span>
+                    <button class="juice-wish" onclick="event.stopPropagation(); ZEST.toggleWishlist('sunset-glow', 'Sunset Glow')"><i class="fas fa-heart"></i></button>
+                </div>
+                <div class="juice-info">
+                    <div class="juice-cat">Energy Boost</div>
+                    <h3 class="juice-name">Sunset Glow</h3>
+                    <p class="juice-desc">Mango, carrot, orange, turmeric & passion fruit. A tropical burst of antioxidants.</p>
+                    <div class="juice-footer">
+                        <div class="juice-price" data-price="9.00">$9.00</div>
+                        <button class="juice-add" onclick="event.stopPropagation(); ZEST.addToCart('sunset-glow', 'Sunset Glow', 9.00)"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="juice-card" onclick="window.location.href='menu.html'">
+                <div class="juice-img">
+                    <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&q=80" alt="Berry Rush">
+                    <span class="juice-badge badge-seasonal">Seasonal</span>
+                    <button class="juice-wish" onclick="event.stopPropagation(); ZEST.toggleWishlist('berry-rush', 'Berry Rush')"><i class="fas fa-heart"></i></button>
+                </div>
+                <div class="juice-info">
+                    <div class="juice-cat">Immunity</div>
+                    <h3 class="juice-name">Berry Rush</h3>
+                    <p class="juice-desc">Strawberry, blueberry, pomegranate & açaí. Loaded with antioxidants and Vitamin C.</p>
+                    <div class="juice-footer">
+                        <div class="juice-price" data-price="9.50">$9.50</div>
+                        <button class="juice-add" onclick="event.stopPropagation(); ZEST.addToCart('berry-rush', 'Berry Rush', 9.50)"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GREEN BANNER -->
+    <section class="green-banner">
+        <div class="section-label" style="color: var(--yellow);">Personalize It</div>
+        <h2 class="section-title">Create Your Perfect Blend</h2>
+        <p class="section-subtitle">Choose your base, add your boosters, pick your sweetness level. Your body, your juice, your rules.</p>
+        <div class="banner-btns">
+            <a href="customize.html" class="btn-primary">Start Building</a>
+            <a href="membership.html" class="btn-white">Join Juice Club</a>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+        <div style="text-align: center; max-width: 1200px; margin: 0 auto;">
+            <div class="section-label">Reviews</div>
+            <h2 class="section-title">What Our Customers Say</h2>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card reveal">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"The Green Goddess completely changed my mornings. I've tried every juice bar in the city and nothing comes close. The freshness is unreal!"</p>
+                <div class="reviewer">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Sarah" class="reviewer-avatar">
+                    <div>
+                        <div class="reviewer-name">Sarah Williams</div>
+                        <div class="reviewer-since">Member since 2024</div>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card reveal">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"I order the Sunset Glow three times a week. The quality is consistently amazing and I love that they use organic produce. Worth every penny."</p>
+                <div class="reviewer">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Marcus" class="reviewer-avatar">
+                    <div>
+                        <div class="reviewer-name">Marcus Chen</div>
+                        <div class="reviewer-since">Member since 2023</div>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card reveal">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"The custom blend feature is a game-changer. I built my perfect post-workout juice and they nailed it exactly. This is my go-to spot now."</p>
+                <div class="reviewer">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Emma" class="reviewer-avatar">
+                    <div>
+                        <div class="reviewer-name">Emma Rodriguez</div>
+                        <div class="reviewer-since">Member since 2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter">
+        <div class="newsletter-box">
+            <div class="section-label">Stay Fresh</div>
+            <h2 class="section-title">Get Weekly Juice Tips</h2>
+            <p class="section-subtitle" style="margin: 0 auto 0.5rem;">Seasonal recipes, health tips, and exclusive member offers delivered to your inbox.</p>
+            <div class="newsletter-form">
+                <input type="email" placeholder="your@email.com">
+                <button class="btn-primary" onclick="alert('Thanks for subscribing! 🍊')">Subscribe</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <div class="footer-brand">ZEST<span>.</span></div>
+                <p class="footer-description">Cold-pressed, organic, made-to-order juices crafted with love and sourced from local farms. Nourish your body, one sip at a time.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Menu</h4>
+                <ul class="footer-links">
+                    <li><a href="menu.html">All Juices</a></li>
+                    <li><a href="menu.html">Cleanses</a></li>
+                    <li><a href="menu.html">Smoothies</a></li>
+                    <li><a href="customize.html">Custom Blend</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="blog.html">Journal</a></li>
+                    <li><a href="contact.html">Find Us</a></li>
+                    <li><a href="affiliate.html">Partners</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Members</h4>
+                <ul class="footer-links">
+                    <li><a href="membership.html">Juice Club</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="login.html">My Account</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 ZEST Juice Bar. Made with 🍊 and organic produce. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Currency Dropdown Styles -->
+    <style>
+        .currency-selector { position: relative; }
+        .currency-btn { background: transparent; border: 1.5px solid rgba(26,74,46,0.2); color: var(--text-dark); padding: 0.4rem 0.9rem; cursor: pointer; font-size: 0.82rem; font-weight: 500; border-radius: 50px; display: flex; align-items: center; gap: 0.4rem; transition: all 0.3s; font-family: 'DM Sans', sans-serif; }
+        .currency-btn:hover { border-color: var(--green-mid); }
+        .currency-dropdown { position: absolute; top: 100%; right: 0; margin-top: 0.5rem; background: white; border: 1px solid rgba(76,175,118,0.15); border-radius: 12px; min-width: 160px; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; }
+        .currency-dropdown.active { display: block; }
+        .currency-option { padding: 0.7rem 1rem; cursor: pointer; font-size: 0.85rem; color: var(--text-dark); transition: background 0.2s; }
+        .currency-option:hover { background: var(--cream); }
+    </style>
+
+    <script src="common.js"></script>
+</body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - ZEST Juice Bar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="common.css">
+    <style>
+        .menu-hero {
+            padding: 10rem 5% 5rem;
+            background: linear-gradient(135deg, var(--green-deep), var(--green-mid));
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px; left: 0; right: 0;
+            height: 100px;
+            background: var(--cream);
+            clip-path: ellipse(60% 60px at 50% 100%);
+        }
+        .menu-hero .section-label { color: var(--yellow); }
+        .menu-hero .section-title { color: white; font-size: 4.5rem; }
+        .menu-hero p { color: rgba(255,255,255,0.75); font-size: 1.1rem; margin-top: 1rem; }
+
+        .filter-bar {
+            padding: 4rem 5% 2rem;
+            background: var(--cream);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .filter-btns { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+        .filter-btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            border: 2px solid rgba(26,74,46,0.15);
+            background: white;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--green-deep);
+            border-color: var(--green-deep);
+            color: white;
+        }
+
+        .menu-section { padding: 2rem 5% 5rem; background: var(--cream); }
+        .menu-inner { max-width: 1400px; margin: 0 auto; }
+
+        .cat-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--green-deep);
+            margin: 3rem 0 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(76,175,118,0.2);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        .menu-card-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        .menu-card-img img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+        .menu-card:hover .menu-card-img img { transform: scale(1.08); }
+        .menu-card-body { padding: 1.2rem; }
+        .menu-card-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--green-deep);
+            margin-bottom: 0.4rem;
+        }
+        .menu-card-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; }
+        .menu-card-foot { display: flex; justify-content: space-between; align-items: center; }
+        .menu-card-price { font-weight: 700; font-size: 1.15rem; color: var(--green-deep); }
+        .add-btn {
+            padding: 0.45rem 1.1rem;
+            background: var(--orange);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .add-btn:hover { background: #E05828; transform: scale(1.05); }
+
+        .ingredients-tag {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-bottom: 0.8rem;
+        }
+        .ing-tag {
+            padding: 0.2rem 0.7rem;
+            background: var(--cream);
+            border-radius: 50px;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        @media (max-width: 1024px) { .menu-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 768px) { .menu-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 480px) { .menu-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-to-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">ZEST<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="customize.html">Build Your Blend</a></li>
+                <li><a href="about.html">Our Story</a></li>
+                <li><a href="blog.html">Journal</a></li>
+                <li><a href="contact.html">Find Us</a></li>
+                <li><a href="login.html" id="loginLink">Login</a></li>
+                <li class="currency-selector">
+                    <button class="currency-btn" id="currencyBtn"><span>USD</span><i class="fas fa-chevron-down"></i></button>
+                    <div class="currency-dropdown" id="currencyDropdown"></div>
+                </li>
+                <li><a href="#" class="cart-icon"><i class="fas fa-shopping-bag"></i><span class="cart-count" id="cart-count">0</span></a></li>
+            </ul>
+            <div class="mobile-menu-toggle" onclick="ZEST.toggleMobileMenu()"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="menu-hero">
+        <div class="section-label">Full Menu</div>
+        <h1 class="section-title">Our Juices & Blends</h1>
+        <p>Every juice pressed fresh when you order. No shortcuts, just pure goodness.</p>
+    </section>
+
+    <div class="filter-bar">
+        <div class="filter-btns">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Cold-Pressed Juices</button>
+            <button class="filter-btn">Smoothies</button>
+            <button class="filter-btn">Cleanses</button>
+            <button class="filter-btn">Shots</button>
+            <button class="filter-btn">Boosters</button>
+        </div>
+    </div>
+
+    <section class="menu-section">
+        <div class="menu-inner">
+
+            <!-- Cold-Pressed Juices -->
+            <h2 class="cat-title"><span>🥒</span> Cold-Pressed Juices</h2>
+            <div class="menu-grid">
+                <div class="menu-card reveal">
+                    <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&q=80" alt="Green Goddess"></div>
+                    <div class="menu-card-body">
+                        <h3 class="menu-card-name">Green Goddess</h3>
+                        <div class="ingredients-tag"><span class="ing-tag">Kale</span><span class="ing-tag">Cucumber</span><span class="ing-tag">Apple</span><span class="ing-tag">Ginger</span></div>
+                        <p class="menu-card-desc">The ultimate detox blend. Alkalizing, refreshing, and packed with chlorophyll.</p>
+                        <div class="menu-card-foot">
+                            <span class="menu-card-price" data-price="8.50">$8.50</span>
+                            <button class="add-btn" onclick="ZEST.addToCart('green-goddess','Green Goddess',8.50)">Add +</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card reveal">
+                    <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1534353436294-0dbd4bdac845?w=400&q=80" alt="Sunset Glow"></div>
+                    <div class="menu-card-body">
+                        <h3 class="menu-card-name">Sunset Glow</h3>
+                        <div class="ingredients-tag"><span class="ing-tag">Mango</span><span class="ing-tag">Carrot</span><span class="ing-tag">Orange</span><span class="ing-tag">Turmeric</span></div>
+                        <p class="menu-card-desc">Anti-inflammatory powerhouse with a gorgeous golden hue and tropical taste.</p>
+                        <div class="menu-card-foot">
+                            <span class="menu-card-price" data-price="9.00">$9.00</span>
+                            <button class="add-btn" onclick="ZEST.addToCart('sunset-glow','Sunset Glow',9.00)">Add +</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card reveal">
+                    <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=400&q=80" alt="Red Revival"></div>
+                    <div class="menu-card-body">
+                        <h3 class="menu-card-name">Red Revival</h3>
+                        <div class="ingredients-tag"><span class="ing-tag">Beetroot</span><span class="ing-tag">Apple</span><span class="ing-tag">Celery</span><span class="ing-tag">Lemon</span></div>
+                        <p class="menu-card-desc">A blood-building, liver-cleansing blend with earthy sweetness and citrus zing.</p>
+                        <div class="menu-card-foot">
+                            <span class="menu-card-price" data-price="8.75">$8.75</span>
+                            <button class="add-btn" onclick="ZEST.addToCart('red-revival','Red Revival',8.75)">Add +</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card reveal">
+                    <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400&q=80" alt="Citrus Surge"></div>
+                    <div class="menu-card-body">
+                        <h3 class="menu-card-name">Citrus Surge</h3>
+                        <div class="ingredients-tag"><span class="ing-tag">Orange</span><span class="ing-tag">Grapefruit</span><span class="ing-tag">Lemon</span><span class="ing-tag">Mint</span></div>
+                        <p class="menu-card-desc">Vitamin C-packed citrus party that wakes you up better than coffee.</p>
+                        <div class="menu-card-foot">
+                            <span class="menu-card-price" data-price="7.50">$7.50</span>
+                            <button class="add-btn" onclick="ZEST.addToCart('citrus-surge','Citrus Surge',7.50)">Add +</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Smoothies -->
+            <h2 class="cat-title"><span>🍓</span> Smoothies</h2>
+            <div class="menu-grid">
+                <div class="menu-card reveal">
+                    <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=400&q=80" alt="Berry Rush"></div>
+                    <div class="menu-card-body">
+                        <h3 class="menu-card-name">Berry Rush</h3>
+                        <div class="ingredients-tag"><span class="ing-tag">Strawberry</span><span class="ing-tag">Blueberry</span><span class="ing-tag">Açaí</span><span class="ing-tag">Oat Milk</span></div>
+                        <p class="menu-card-desc">Antioxidant-rich berry blend with creamy oat milk and a touch of raw honey.</p>
+                        <div class="menu-card-foot">
+                            <span class="menu-card-price" data-price="9.50">$9.50</span>
+                            <button class="add-btn" onclick="ZEST.addToCart('berry-rush','Berry Rush',9.50)">Add +</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card reveal">
+                    <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400&q=80" alt="Tropical Storm"></div>
+                    <div class="menu-card-body">
+                        <h3 class="menu-card-name">Tropical Storm</h3>
+                        <div class="ingredients-tag"><span class="ing-tag">Pineapple</span><span class="ing-tag">Coconut</span><span class="ing-tag">Banana</span><span class="ing-tag">Mango</span></div>
+                        <p class="menu-card-desc">A holiday in a cup. Thick, creamy, and bursting with tropical sweetness.</p>
+                        <div class="menu-card-foot">
+                            <span class="menu-card-price" data-price="10.00">$10.00</span>
+                            <button class="add-btn" onclick="ZEST.addToCart('tropical-storm','Tropical Storm',10.00)">Add +</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card reveal">
+                    <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1494597564530-871f2b93ac55?w=400&q=80" alt="Protein Power"></div>
+                    <div class="menu-card-body">
+                        <h3 class="menu-card-name">Protein Power</h3>
+                        <div class="ingredients-tag"><span class="ing-tag">Banana</span><span class="ing-tag">Almond Butter</span><span class="ing-tag">Cacao</span><span class="ing-tag">Dates</span></div>
+                        <p class="menu-card-desc">Post-workout recovery fuel with plant protein and healthy fats.</p>
+                        <div class="menu-card-foot">
+                            <span class="menu-card-price" data-price="11.00">$11.00</span>
+                            <button class="add-btn" onclick="ZEST.addToCart('protein-power','Protein Power',11.00)">Add +</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card reveal">
+                    <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1523473827533-2a64d0d36748?w=400&q=80" alt="Mint Refresh"></div>
+                    <div class="menu-card-body">
+                        <h3 class="menu-card-name">Mint Refresh</h3>
+                        <div class="ingredients-tag"><span class="ing-tag">Spinach</span><span class="ing-tag">Mint</span><span class="ing-tag">Avocado</span><span class="ing-tag">Coconut Water</span></div>
+                        <p class="menu-card-desc">Cooling, creamy and hydrating. The perfect midday pick-me-up.</p>
+                        <div class="menu-card-foot">
+                            <span class="menu-card-price" data-price="10.50">$10.50</span>
+                            <button class="add-btn" onclick="ZEST.addToCart('mint-refresh','Mint Refresh',10.50)">Add +</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shots -->
+            <h2 class="cat-title"><span>⚡</span> Wellness Shots</h2>
+            <div class="menu-grid">
+                <div class="menu-card reveal">
+                    <div class="menu-card-img" style="height: 160px;"><img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&q=80" alt="Ginger Fire"></div>
+                    <div class="menu-card-body">
+                        <h3 class="menu-card-name">Ginger Fire</h3>
+                        <p class="menu-card-desc">Raw ginger, lemon & cayenne. Anti-nausea, anti-inflammatory, immune boost.</p>
+                        <div class="menu-card-foot">
+                            <span class="menu-card-price" data-price="3.50">$3.50</span>
+                            <button class="add-btn" onclick="ZEST.addToCart('ginger-fire','Ginger Fire',3.50)">Add +</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card reveal">
+                    <div class="menu-card-img" style="height: 160px;"><img src="https://images.unsplash.com/photo-1567306295427-94503f8300d7?w=400&q=80" alt="Turmeric Gold"></div>
+                    <div class="menu-card-body">
+                        <h3 class="menu-card-name">Turmeric Gold</h3>
+                        <p class="menu-card-desc">Turmeric, black pepper, coconut oil & lemon. Powerful anti-inflammatory shot.</p>
+                        <div class="menu-card-foot">
+                            <span class="menu-card-price" data-price="3.50">$3.50</span>
+                            <button class="add-btn" onclick="ZEST.addToCart('turmeric-gold','Turmeric Gold',3.50)">Add +</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card reveal">
+                    <div class="menu-card-img" style="height: 160px;"><img src="https://images.unsplash.com/photo-1535591273668-578e31182c4f?w=400&q=80" alt="Wheatgrass"></div>
+                    <div class="menu-card-body">
+                        <h3 class="menu-card-name">Wheatgrass Pure</h3>
+                        <p class="menu-card-desc">Freshly pressed wheatgrass. Alkalizing, detoxifying, and energy-boosting.</p>
+                        <div class="menu-card-foot">
+                            <span class="menu-card-price" data-price="4.00">$4.00</span>
+                            <button class="add-btn" onclick="ZEST.addToCart('wheatgrass','Wheatgrass Pure',4.00)">Add +</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card reveal">
+                    <div class="menu-card-img" style="height: 160px;"><img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&q=80" alt="Immunity Blast"></div>
+                    <div class="menu-card-body">
+                        <h3 class="menu-card-name">Immunity Blast</h3>
+                        <p class="menu-card-desc">Elderberry, echinacea, vitamin C & zinc. Your daily shield against illness.</p>
+                        <div class="menu-card-foot">
+                            <span class="menu-card-price" data-price="4.50">$4.50</span>
+                            <button class="add-btn" onclick="ZEST.addToCart('immunity-blast','Immunity Blast',4.50)">Add +</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .currency-selector { position: relative; }
+        .currency-btn { background: transparent; border: 1.5px solid rgba(26,74,46,0.2); color: var(--text-dark); padding: 0.4rem 0.9rem; cursor: pointer; font-size: 0.82rem; font-weight: 500; border-radius: 50px; display: flex; align-items: center; gap: 0.4rem; transition: all 0.3s; font-family: 'DM Sans', sans-serif; }
+        .currency-btn:hover { border-color: var(--green-mid); }
+        .currency-dropdown { position: absolute; top: 100%; right: 0; margin-top: 0.5rem; background: white; border: 1px solid rgba(76,175,118,0.15); border-radius: 12px; min-width: 160px; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; }
+        .currency-dropdown.active { display: block; }
+        .currency-option { padding: 0.7rem 1rem; cursor: pointer; font-size: 0.85rem; color: var(--text-dark); transition: background 0.2s; }
+        .currency-option:hover { background: var(--cream); }
+    </style>
+    <script src="common.js"></script>
+    <script>
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
